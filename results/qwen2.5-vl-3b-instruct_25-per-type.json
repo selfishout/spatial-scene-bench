@@ -1,0 +1,55 @@
+{
+  "closest": {
+    "acc": 0.64,
+    "n": 25
+  },
+  "compare_count": {
+    "acc": 0.92,
+    "n": 25
+  },
+  "count": {
+    "acc": 0.72,
+    "mra": 0.836,
+    "n": 25
+  },
+  "count_relation": {
+    "acc": 0.76,
+    "mra": 0.7919999999999999,
+    "n": 25
+  },
+  "distance": {
+    "acc": 0.016,
+    "mra": 0.016,
+    "n": 25
+  },
+  "ego_direction": {
+    "acc": 0.4,
+    "n": 25
+  },
+  "relation": {
+    "acc": 0.92,
+    "n": 25
+  },
+  "video_closest": {
+    "acc": 0.52,
+    "n": 25
+  },
+  "video_count": {
+    "acc": 0.24,
+    "mra": 0.444,
+    "n": 25
+  },
+  "video_distance": {
+    "acc": 0.0,
+    "mra": 0.0,
+    "n": 25
+  },
+  "video_ego_direction": {
+    "acc": 0.4,
+    "n": 25
+  },
+  "overall": {
+    "acc": 0.5032727272727273,
+    "n": 275
+  }
+}

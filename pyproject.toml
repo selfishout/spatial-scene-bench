@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spatial-scene-bench"
+version = "0.1.0"
+description = "Procedural 3D scenes with exact ground truth for probing counting and relational reasoning in VLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ali Torabi" }]
+dependencies = ["numpy>=1.24", "pillow>=10.0"]
+
+[project.optional-dependencies]
+hf = ["torch>=2.2", "transformers>=4.49", "accelerate", "qwen-vl-utils"]
+api = ["openai>=1.40"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+ssb-generate = "spatial_scene_bench.generate:main"
+ssb-eval = "spatial_scene_bench.run_eval:main"
+
+[tool.setuptools.packages.find]
+include = ["spatial_scene_bench*"]
