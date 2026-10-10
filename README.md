@@ -78,8 +78,10 @@ from datasets import load_dataset
 ds = load_dataset("alithema/spatial-scene-bench", "mini", split="test")
 ```
 
-A task for [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) with the same scoring is proposed in
-[lmms-eval#1574](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1574):
+Integrations with the same scoring are proposed for [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval)
+([#1574](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1574)) and
+[VLMEvalKit](https://github.com/open-compass/VLMEvalKit)
+([#1750](https://github.com/open-compass/VLMEvalKit/pull/1750), `--data SpatialSceneBench_mini`):
 
 ```bash
 python -m lmms_eval --model qwen2_5_vl --model_args pretrained=Qwen/Qwen2.5-VL-3B-Instruct \
