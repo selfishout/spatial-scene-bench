@@ -15,17 +15,19 @@ from pathlib import Path
 
 from datasets import Dataset, Features, Image, Sequence, Value
 
-FEATURES = Features({
-    "id": Value("string"),
-    "scene_id": Value("string"),
-    "question_type": Value("string"),
-    "modality": Value("string"),
-    "question": Value("string"),
-    "options": Sequence(Value("string")),
-    "answer": Value("string"),
-    "answer_type": Value("string"),
-    "images": Sequence(Image()),
-})
+FEATURES = Features(
+    {
+        "id": Value("string"),
+        "scene_id": Value("string"),
+        "question_type": Value("string"),
+        "modality": Value("string"),
+        "question": Value("string"),
+        "options": Sequence(Value("string")),
+        "answer": Value("string"),
+        "answer_type": Value("string"),
+        "images": Sequence(Image()),
+    }
+)
 
 
 def load_rows(data_dir: Path) -> list[dict]:
@@ -33,17 +35,19 @@ def load_rows(data_dir: Path) -> list[dict]:
     with open(data_dir / "questions.jsonl") as f:
         for line in f:
             r = json.loads(line)
-            rows.append({
-                "id": r["id"],
-                "scene_id": r["scene_id"],
-                "question_type": r["type"],
-                "modality": r["modality"],
-                "question": r["question"],
-                "options": r["options"],
-                "answer": r["answer"],
-                "answer_type": r["answer_type"],
-                "images": [{"bytes": (data_dir / p).read_bytes(), "path": p} for p in r["images"]],
-            })
+            rows.append(
+                {
+                    "id": r["id"],
+                    "scene_id": r["scene_id"],
+                    "question_type": r["type"],
+                    "modality": r["modality"],
+                    "question": r["question"],
+                    "options": r["options"],
+                    "answer": r["answer"],
+                    "answer_type": r["answer_type"],
+                    "images": [{"bytes": (data_dir / p).read_bytes(), "path": p} for p in r["images"]],
+                }
+            )
     return rows
 
 
