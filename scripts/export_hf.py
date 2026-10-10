@@ -1,7 +1,7 @@
 """Export a generated benchmark to a self-contained Hugging Face dataset (images embedded).
 
     python scripts/export_hf.py --data data/ssb --out data/ssb_hf
-    python scripts/export_hf.py --data data/ssb --push selfishout/spatial-scene-bench
+    python scripts/export_hf.py --data data/ssb --push alithema/spatial-scene-bench
 
 Two configs are written: ``full`` (every question) and ``mini`` (the first ``--mini-per-type``
 questions of each type, the same subset used by ``ssb-eval --per-type``).

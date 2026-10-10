@@ -68,6 +68,26 @@ out = render(scene, cam)                       # out.rgb, out.depth, out.instanc
 qs = generate_questions(scene, [(cam, out.visible_pixels())], None, np.random.default_rng(0))
 ```
 
+### Hugging Face dataset and lmms-eval
+
+The 200-scene test set is on the Hub as [alithema/spatial-scene-bench](https://huggingface.co/datasets/alithema/spatial-scene-bench)
+(`full`: 4,387 questions, `mini`: 25 per type), with all images embedded:
+
+```python
+from datasets import load_dataset
+ds = load_dataset("alithema/spatial-scene-bench", "mini", split="test")
+```
+
+A task for [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) with the same scoring is proposed in
+[lmms-eval#1574](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1574):
+
+```bash
+python -m lmms_eval --model qwen2_5_vl --model_args pretrained=Qwen/Qwen2.5-VL-3B-Instruct \
+    --tasks spatial_scene_bench_mini --batch_size 1
+```
+
+`scripts/export_hf.py` rebuilds the Hub dataset from any generated split.
+
 ## First results
 
 The dataset has 200 scenes, 6–12 objects each, 320×240 resolution, one random view plus a 16-frame orbit per
