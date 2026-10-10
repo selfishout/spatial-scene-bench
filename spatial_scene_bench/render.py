@@ -145,7 +145,8 @@ def render(scene: Scene, camera: Camera, shadows: bool = True) -> RenderOutput:
 
     if shadows:
         idx = np.nonzero(hit)[0]
-        ts, _, _ = intersect_scene(P[idx] + 1e-3 * n[idx], np.broadcast_to(L, (len(idx), 3)).copy(), scene, include_ground=False)
+        shadow_dirs = np.broadcast_to(L, (len(idx), 3)).copy()
+        ts, _, _ = intersect_scene(P[idx] + 1e-3 * n[idx], shadow_dirs, scene, include_ground=False)
         lit = np.ones(len(D))
         lit[idx] = np.where(np.isfinite(ts), 0.25, 1.0)
         lambert = lambert * lit
